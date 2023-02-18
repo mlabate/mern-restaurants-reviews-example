@@ -1,5 +1,7 @@
-import mongodb from "mongodb"
-const ObjectId = mongodb.ObjectID
+/*import mongodb from "mongodb"
+const ObjectId = mongodb.ObjectID*/
+import { ObjectId } from "bson"
+//const ObjectId = require('mongodb');
 
 let reviews
 
@@ -17,11 +19,13 @@ export default class ReviewsDAO {
 
   static async addReview(restaurantId, user, review, date) {
     try {
-      const reviewDoc = { name: user.name,
+      const reviewDoc = { 
+          name: user.name,
           user_id: user._id,
           date: date,
           text: review,
-          restaurant_id: ObjectId(restaurantId), }
+          restaurant_id: new ObjectId(restaurantId),
+        }
 
       return await reviews.insertOne(reviewDoc)
     } catch (e) {
