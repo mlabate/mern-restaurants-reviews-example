@@ -1,5 +1,7 @@
-import mongodb from "mongodb"
-const ObjectId = mongodb.ObjectID
+/*import mongodb from "mongodb"
+const ObjectId = mongodb.ObjectID*/
+import { ObjectId } from "bson"
+
 let restaurants
 
 export default class RestaurantsDAO {
